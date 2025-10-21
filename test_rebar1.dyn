@@ -1,0 +1,658 @@
+{
+  "Uuid": "47c75332-5a10-4304-9c0a-85ffc9071f60",
+  "IsCustomNode": false,
+  "Description": "",
+  "Name": "test_rebar1",
+  "ElementResolver": {
+    "ResolutionMap": {
+      "Autodesk.Point": {
+        "Key": "Autodesk.DesignScript.Geometry.Point",
+        "Value": "ProtoGeometry.dll"
+      },
+      "Autodesk.DesignScript.Geometry.Point": {
+        "Key": "Autodesk.DesignScript.Geometry.Point",
+        "Value": "ProtoGeometry.dll"
+      },
+      "List": {
+        "Key": "List",
+        "Value": "BuiltIn.ds"
+      }
+    }
+  },
+  "Inputs": [
+    {
+      "Id": "3e4014a0fcab45589bd1820082b8b65a",
+      "Name": "Set Rebar Diameter",
+      "Type": "selection",
+      "Type2": "dropdownSelection",
+      "Value": "",
+      "Description": "Select Rebar Bar Type",
+      "SelectedIndex": -1
+    }
+  ],
+  "Outputs": [
+    {
+      "Id": "3e4014a0fcab45589bd1820082b8b65a",
+      "Name": "Set Rebar Diameter",
+      "Type": "unknown",
+      "InitialValue": "",
+      "Description": "Select Rebar Bar Type"
+    }
+  ],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Nodes.DSModelElementSelection, DSRevitNodesUI",
+      "NodeType": "ExtensionNode",
+      "InstanceId": [
+        "1e047386-4ca2-421f-8b62-ac56869797cb-0018530f"
+      ],
+      "Id": "fd49da1e41aa4f3cb805aca30887fbfa",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "53e86507eb014b2bb50d8dd9772aec71",
+          "Name": "Element",
+          "Description": "The selected elements.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Select a model element from the document."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "Id": "20563f3f5126497ca7bd86108f0ebe7f",
+      "NodeType": "FunctionNode",
+      "Inputs": [
+        {
+          "Id": "4d5998b76dea4228984ad6e9c7509706",
+          "Name": "element",
+          "Description": "Revit.Elements.Element",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "1102369571e34cd49fce8a7cf4a985f2",
+          "Name": "Surface[]",
+          "Description": "Surface[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "FunctionSignature": "Revit.Elements.Element.Faces",
+      "Replication": "Auto",
+      "Description": "The Faces in this Element\n\nElement.Faces: Surface[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "Id": "3356bc1f13114a869ac72b999288c8aa",
+      "NodeType": "FunctionNode",
+      "Inputs": [
+        {
+          "Id": "69cae53070fb4e21be06f6fe8edda5ab",
+          "Name": "list",
+          "Description": "List to fetch an item from.\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "7c27763b235546bc92f0388fe0c192b9",
+          "Name": "index",
+          "Description": "Index of the item to be fetched.\n\nint",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "8d9d213dc91e4d73a8b6c3d6f213ebdf",
+          "Name": "item",
+          "Description": "Item in the list at the given index.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "FunctionSignature": "DSCore.List.GetItemAtIndex@var[]..[],int",
+      "Replication": "Auto",
+      "Description": "Returns an item from the given list that's located at the specified index.\n\nList.GetItemAtIndex (list: var[]..[], index: int): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "Id": "1ae74eff1ace43099444e2725b507bd5",
+      "NodeType": "CodeBlockNode",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "c925bcb51c034eae8f570c76d4011cdd",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly",
+      "Code": "0;"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
+      "FunctionSignature": "8f5bfaf8-b6b2-4a24-b1a3-bb644cf759d3",
+      "FunctionType": "Graph",
+      "Id": "8db9017f8626496f8d71a396f986cdea",
+      "NodeType": "FunctionNode",
+      "Inputs": [
+        {
+          "Id": "278b78d72e4842539925f16407d56b02",
+          "Name": "surface",
+          "Description": "Surface",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "cb54eedd33ee4be6bb4a4370780c76ad",
+          "Name": "PolyCurves",
+          "Description": "return value",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Get all closed PolyCurves of Surface, first item is the perimeter PolyCurve, rest are the hole edges"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "Id": "025d91a63f8c4ec28b70991dd9d0df97",
+      "NodeType": "CodeBlockNode",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "f10cb4381d494aceb4e917207c335877",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly",
+      "Code": "25+0.5*10;"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
+      "FunctionSignature": "d3cc324e-229a-474b-9a2b-cf5b5fdeae07",
+      "FunctionType": "Graph",
+      "Id": "7aaf8c0a3d044ee889de383bd00136b4",
+      "NodeType": "FunctionNode",
+      "Inputs": [
+        {
+          "Id": "47e28ca595b54be9bd933b8c67e39ba8",
+          "Name": "curve",
+          "Description": "Curve",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "798322cd922d4d13b7733436fc17ba16",
+          "Name": "OffsetDistance",
+          "Description": "double\nDefault value : 1",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "fa58920925914786b82e4dffff57431c",
+          "Name": "Curve",
+          "Description": "return value",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Safe offset curve, minus distance will return a smaller curve or a closer curve to [0,0,0]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
+      "FunctionSignature": "104c4d37-46aa-45c1-9630-67ae0f0ef2a6",
+      "FunctionType": "Graph",
+      "Id": "3e5b9d4f00a9417cae26ec00d51d4f61",
+      "NodeType": "FunctionNode",
+      "Inputs": [
+        {
+          "Id": "2dc6dc02785540f6b5346ac97ac63f04",
+          "Name": "element",
+          "Description": "Select an element which can host rebar\n\nElement",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "bc1298d69f8d43299c1adab874001f59",
+          "Name": "ConvertToMM",
+          "Description": "Return the value in mm (true) or feet (false)\n\nbool\nDefault value : true",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "24de18c22028453c880b472bf2a900a0",
+          "Name": "Top/Exterior",
+          "Description": "return value",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "379e6206eab24f7da449b8aa8bfe2674",
+          "Name": "Bottom/Interior",
+          "Description": "return value",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "d8a6798f23c548f8a57ac7c800134174",
+          "Name": "Other",
+          "Description": "return value",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Get the rebar cover dimensions for a selected element."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
+      "FunctionSignature": "d6b7d48c-5063-4e2f-9691-28346a25422f",
+      "FunctionType": "Graph",
+      "Id": "bdba7731cb4a46d4bf745f6d3272570e",
+      "NodeType": "FunctionNode",
+      "Inputs": [
+        {
+          "Id": "c7578f636461465e8b9649291ff6a186",
+          "Name": "rebarBarType",
+          "Description": "Element",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "f5f714ecb74f4c0f9b1a549ee230f439",
+          "Name": "Diameter",
+          "Description": "return value",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Get the diameter of a given Rebar Bar Type"
+    },
+    {
+      "ConcreteType": "DynamoRebarUI.RebarBarType, DynamoRebarUI",
+      "ElementType": "Autodesk.Revit.DB.Structure.RebarBarType, RevitAPI, Version=24.3.40.0, Culture=neutral, PublicKeyToken=null",
+      "SelectedIndex": -1,
+      "SelectedString": "",
+      "Id": "3e4014a0fcab45589bd1820082b8b65a",
+      "NodeType": "ExtensionNode",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "3fe0ab1b79b34c4e8b35a0da28f91bee",
+          "Name": "Rebar Bar Type",
+          "Description": "The selected Rebar Bar Type",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "abb0f89cc90d4b4f9f10113a6c770d53",
+          "Name": "Rebar Bar Type",
+          "Description": "The selected Rebar Bar Type",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Select Rebar Bar Type"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "Id": "08c03ce7a3444eb3a1cf0a95e48eeab1",
+      "NodeType": "FunctionNode",
+      "Inputs": [
+        {
+          "Id": "f0ec0c299f6949bebbbae878ae95294f",
+          "Name": "polyCurve",
+          "Description": "Autodesk.DesignScript.Geometry.PolyCurve",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "05a91e1660d64ecd9024cdbde84aad99",
+          "Name": "signedDistance",
+          "Description": "A positive offset distance applies in the direction of the cross product between the polycurve's tangent and the plane's normal vector, while a negative offset applies in the opposite direction.\n\ndouble",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "3162aab8458d4320a0f14276fe9d4e4f",
+          "Name": "extendCircular",
+          "Description": "If there are gaps between the offset component curves then, depending on the gap closure settings, they may be filled either by circular arcs (true value) to give smooth corners, or by extending (false value) the offset curves.\n\nbool",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "67512cc369d34e17a0da9fee85ccc40f",
+          "Name": "planeNormal",
+          "Description": "The curve's plane normal. Defaults to the input curve's plane normal\n\nVector\nDefault value : null",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "ba85cc2000f448f9b77608f037c41684",
+          "Name": "Curve[]..[]",
+          "Description": "One or more offset polycurves",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.PolyCurve.OffsetMany@double,bool,Autodesk.DesignScript.Geometry.Vector",
+      "Replication": "Auto",
+      "Description": "Create one or more Polycurves by offsetting a planar polycurve by the given distance in a plane defined by the plane normal. The \"planeNormal\" input argument defaults to the normal of the plane containing the curve but an explicit normal parallel to the original curve normal can be provided to better control the direction of the offset. For example, if a consistent offset direction is required for multiple curves sharing the same plane, the \"planeNormal\" can be used to override individual curve normals and force all curves to be offset in the same direction. Reversing the normal reverses the direction of the offset.\n\nPolyCurve.OffsetMany (signedDistance: double, extendCircular: bool, planeNormal: Vector = null): Curve[]..[]"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "53e86507eb014b2bb50d8dd9772aec71",
+      "End": "4d5998b76dea4228984ad6e9c7509706",
+      "Id": "24d4f1d25c4740cfa4af6fed8aa62c34",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "53e86507eb014b2bb50d8dd9772aec71",
+      "End": "2dc6dc02785540f6b5346ac97ac63f04",
+      "Id": "7968e6a129504db6bcff8084718de00c",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "1102369571e34cd49fce8a7cf4a985f2",
+      "End": "69cae53070fb4e21be06f6fe8edda5ab",
+      "Id": "7e8e65e8220349fbb7c91dfad33e40cb",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "8d9d213dc91e4d73a8b6c3d6f213ebdf",
+      "End": "278b78d72e4842539925f16407d56b02",
+      "Id": "1b1190bbd33a447a928df058b5e84e7e",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "c925bcb51c034eae8f570c76d4011cdd",
+      "End": "7c27763b235546bc92f0388fe0c192b9",
+      "Id": "37be3c24521d412598aece5854ff4239",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "cb54eedd33ee4be6bb4a4370780c76ad",
+      "End": "f0ec0c299f6949bebbbae878ae95294f",
+      "Id": "b24c51e02ae442889db3436c199dbf1d",
+      "IsHidden": "False"
+    }
+  ],
+  "Dependencies": [
+    "8f5bfaf8-b6b2-4a24-b1a3-bb644cf759d3",
+    "d3cc324e-229a-474b-9a2b-cf5b5fdeae07",
+    "104c4d37-46aa-45c1-9630-67ae0f0ef2a6",
+    "d6b7d48c-5063-4e2f-9691-28346a25422f"
+  ],
+  "NodeLibraryDependencies": [
+    {
+      "Name": "Chynamo",
+      "Version": "0.8.5",
+      "ReferenceType": "Package",
+      "Nodes": [
+        "8db9017f8626496f8d71a396f986cdea",
+        "7aaf8c0a3d044ee889de383bd00136b4"
+      ]
+    },
+    {
+      "Name": "BIM4Struc.Rebar",
+      "Version": "1.3.0",
+      "ReferenceType": "Package",
+      "Nodes": [
+        "3e5b9d4f00a9417cae26ec00d51d4f61",
+        "bdba7731cb4a46d4bf745f6d3272570e"
+      ]
+    },
+    {
+      "Name": "Dynamo for Rebar",
+      "Version": "2.0.2",
+      "ReferenceType": "Package",
+      "Nodes": [
+        "3e4014a0fcab45589bd1820082b8b65a"
+      ]
+    }
+  ],
+  "Thumbnail": "",
+  "GraphDocumentationURL": null,
+  "ExtensionWorkspaceData": [
+    {
+      "ExtensionGuid": "28992e1d-abb9-417f-8b1b-05e053bee670",
+      "Name": "Properties",
+      "Version": "2.19",
+      "Data": {}
+    },
+    {
+      "ExtensionGuid": "DFBD9CC0-DB40-457A-939E-8C8555555A9D",
+      "Name": "Generative Design",
+      "Version": "6.1",
+      "Data": {}
+    }
+  ],
+  "Author": "",
+  "Linting": {
+    "activeLinter": "None",
+    "activeLinterId": "7b75fb44-43fd-4631-a878-29f4d5d8399a",
+    "warningCount": 0,
+    "errorCount": 0
+  },
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 0.01,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.19.3.6394",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "_Background Preview",
+      "EyeX": -20214.302734375,
+      "EyeY": 753.5994873046875,
+      "EyeZ": -1271.6802978515625,
+      "LookX": -128.080078125,
+      "LookY": -753.574462890625,
+      "LookZ": -120.2152099609375,
+      "UpX": -0.658087968826294,
+      "UpY": 0.4305112361907959,
+      "UpZ": -0.61772191524505615
+    },
+    "ConnectorPins": [],
+    "NodeViews": [
+      {
+        "Id": "fd49da1e41aa4f3cb805aca30887fbfa",
+        "Name": "Select Model Element",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": false,
+        "X": -321.82107447291617,
+        "Y": -639.17705617754859
+      },
+      {
+        "Id": "20563f3f5126497ca7bd86108f0ebe7f",
+        "Name": "Element.Faces",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": false,
+        "X": 82.6166998563998,
+        "Y": -639.17705617754859
+      },
+      {
+        "Id": "3356bc1f13114a869ac72b999288c8aa",
+        "Name": "List.GetItemAtIndex",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": false,
+        "X": 509.44750778531454,
+        "Y": -639.17705617754859
+      },
+      {
+        "Id": "1ae74eff1ace43099444e2725b507bd5",
+        "Name": "Code Block",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": false,
+        "X": 223.00003335227018,
+        "Y": -843.7361627379596
+      },
+      {
+        "Id": "8db9017f8626496f8d71a396f986cdea",
+        "Name": "Curves",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 864.97364244308744,
+        "Y": -639.17705617754859
+      },
+      {
+        "Id": "025d91a63f8c4ec28b70991dd9d0df97",
+        "Name": "Code Block",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 1244.4009910042153,
+        "Y": -352.8052725166088
+      },
+      {
+        "Id": "7aaf8c0a3d044ee889de383bd00136b4",
+        "Name": "Offset",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 1041.2985002781154,
+        "Y": -1093.7800679655247
+      },
+      {
+        "Id": "3e5b9d4f00a9417cae26ec00d51d4f61",
+        "Name": "Element.GetRebarCover",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 821.67589502826343,
+        "Y": -352.8052725166088
+      },
+      {
+        "Id": "bdba7731cb4a46d4bf745f6d3272570e",
+        "Name": "RebarType.GetBarDiameter",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 847.28707820423313,
+        "Y": -92.715015794938893
+      },
+      {
+        "Id": "3e4014a0fcab45589bd1820082b8b65a",
+        "Name": "Set Rebar Diameter",
+        "IsSetAsInput": true,
+        "IsSetAsOutput": true,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 339.33679247610939,
+        "Y": -78.7883279184307
+      },
+      {
+        "Id": "08c03ce7a3444eb3a1cf0a95e48eeab1",
+        "Name": "PolyCurve.OffsetMany",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 1438.69165303191,
+        "Y": -639.17705617754859
+      }
+    ],
+    "Annotations": [],
+    "X": -396.23820886844817,
+    "Y": 703.25529214290043,
+    "Zoom": 0.7710387745225189
+  }
+}
